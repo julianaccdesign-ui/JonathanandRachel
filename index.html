@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Johnathan and Rachel's wedding — December 11, 2026." />
+  <title>Johnathan & Rachel's Wedding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="home">
+    <a class="brand" href="#home" aria-label="Johnathan and Rachel wedding home">
+      <img src="assets/logo.svg" alt="Johnathan and Rachel monogram" class="brand-logo" />
+      <span>JOHNATHAN &amp; RACHEL'S WEDDING</span>
+    </a>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#home">HOME</a>
+      <a class="button button-light" href="#rsvp">RSVP</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-photo" aria-label="Johnathan and Rachel">
+      <img src="assets/couple-hero.jpg" alt="Johnathan and Rachel" />
+    </section>
+
+    <section class="details-section section-pattern">
+      <div class="section-inner details-inner">
+        <p class="eyebrow">WITH JOYOUS HEARTS</p>
+        <h1>Johnathan &amp; Rachel</h1>
+        <p class="intro-copy">Together with their families, invite you to join them in the celebration of their marriage as they start their new adventure together!</p>
+
+        <div class="detail-grid">
+          <article class="detail-card">
+            <div class="detail-card-inner">
+              <h2>WHEN</h2>
+              <div class="rule"></div>
+              <p>FRIDAY<br>DECEMBER 11, 2026<br>AT 4:00 PM</p>
+            </div>
+          </article>
+
+          <article class="detail-card">
+            <div class="detail-card-inner">
+              <h2>WHERE</h2>
+              <div class="rule"></div>
+              <p>27274 N. MACARTHUR AVE,<br>BLANCHARD, OK 73010</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="attire-section">
+      <div class="attire-overlay"></div>
+      <div class="section-inner attire-content">
+        <h2>WEDDING ATTIRE</h2>
+        <p>WE INVITE OUR GUESTS TO CELEBRATE WITH US IN THE FOLLOWING COLOR PALETTE.</p>
+        <div class="palette" aria-label="Wedding color palette">
+          <span style="--swatch:#7b9585"></span>
+          <span style="--swatch:#9eb3a0"></span>
+          <span style="--swatch:#7690a4"></span>
+          <span style="--swatch:#a9c7df"></span>
+          <span style="--swatch:#d2cbc0"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="section-inner about-grid">
+        <div class="about-copy">
+          <h2>ABOUT US</h2>
+          <p>We're so grateful for the way God brought us together and guided us to this beautiful season. It brings us so much joy to begin our life together as husband and wife, surrounded by the people we love.</p>
+          <p class="about-callout">WE WOULD LOVE FOR YOU TO BE PART OF THIS SPECIAL DAY.</p>
+        </div>
+        <img src="assets/couple-about.jpg" alt="Johnathan and Rachel together" class="about-photo" />
+      </div>
+    </section>
+
+    <section class="rsvp-section section-pattern-dark" id="rsvp">
+      <div class="section-inner rsvp-inner">
+        <h2>RSVP</h2>
+        <p class="rsvp-intro">Kindly let us know if you'll be joining us by <strong>XX/XX/XXXX</strong>.</p>
+
+        <form id="rsvp-form" class="rsvp-form">
+          <div class="field full-width">
+            <label for="full-name">Full Name</label>
+            <input id="full-name" name="fullName" type="text" autocomplete="name" required />
+          </div>
+
+          <fieldset class="field full-width choice-group">
+            <legend>Will you be joining us?</legend>
+            <label class="choice"><input type="radio" name="attendance" value="Joyfully Accepts" required><span>Joyfully Accepts</span></label>
+            <label class="choice"><input type="radio" name="attendance" value="Regretfully Declines"><span>Regretfully Declines</span></label>
+          </fieldset>
+
+          <fieldset class="field full-width choice-group">
+            <legend>Are you bringing a guest?</legend>
+            <label class="choice"><input type="radio" name="plusOne" value="Yes"><span>Yes</span></label>
+            <label class="choice"><input type="radio" name="plusOne" value="No"><span>No</span></label>
+          </fieldset>
+
+          <div class="field full-width">
+            <label for="party-size">Number attending <span class="helper">(including you)</span></label>
+            <input id="party-size" name="partySize" type="number" min="1" max="10" inputmode="numeric" />
+          </div>
+
+          <div class="field full-width">
+            <label for="message">Message for the couple <span class="helper">(optional)</span></label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+
+          <button class="submit-button" type="submit">Submit</button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/logo.svg" alt="" class="footer-logo" />
+      <span>JOHNATHAN &amp; RACHEL'S WEDDING</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="#home">HOME</a>
+      <span class="divider" aria-hidden="true"></span>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
