@@ -1,0 +1,14 @@
+@media (max-width:760px){
+  .details-inner h1{
+    line-height:1.02;
+    margin-bottom:34px;
+  }
+
+  .eyebrow{
+    margin-bottom:30px;
+  }
+
+  .intro-copy{
+    margin-top:8px;
+  }
+}
