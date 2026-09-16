@@ -1,13 +1,24 @@
 .brand-logo{
-  width:68px;
+  width:105px;
   height:auto;
-  max-height:68px;
+  max-height:105px;
+}
+
+.footer-logo{
+  width:92px;
+  height:auto;
+  max-height:92px;
 }
 
 @media (max-width:760px){
   .brand-logo{
-    width:82px;
-    max-height:82px;
+    width:118px;
+    max-height:118px;
+  }
+
+  .footer-logo{
+    width:105px;
+    max-height:105px;
   }
 
   .details-inner h1{
