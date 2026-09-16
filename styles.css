@@ -52,15 +52,15 @@ button,input,textarea{font:inherit}
 .section-inner{width:min(var(--max),calc(100% - 48px));margin:0 auto}
 
 .section-pattern-light{position:relative;background:var(--light-grey);overflow:hidden}
-.section-pattern-light::before{content:'';position:absolute;inset:0;background:url('assets/pattern-green.png') center/cover repeat;opacity:.2;pointer-events:none}
+.section-pattern-light::before{content:'';position:absolute;inset:0;background:url('assets/pattern-green.png') center/cover repeat;opacity:.15;pointer-events:none}
 .details-section{padding:74px 0}
 .details-inner{position:relative;z-index:1;text-align:center}
 .eyebrow{color:var(--green-soft);letter-spacing:4px;font-weight:500;font-size:14px;margin:0 0 24px}
 .details-inner h1{font-family:'Runethia',cursive;font-weight:400;color:var(--green);font-size:clamp(64px,8vw,104px);line-height:.92;margin:0 0 26px}
 .intro-copy{max-width:900px;margin:0 auto 58px;color:var(--green-soft);text-transform:uppercase;letter-spacing:3px;line-height:1.7;font-size:14px}
-.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:24px;align-items:stretch}
-.detail-card{background:var(--green);padding:24px;color:#fff;height:100%;display:grid}
-.detail-card-inner{border:1px solid rgba(255,255,255,.85);padding:42px 32px;min-height:220px;height:100%;display:flex;flex-direction:column;justify-content:center}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.detail-card{background:var(--green);padding:24px;color:#fff;min-height:356px;display:flex}
+.detail-card-inner{border:1px solid rgba(255,255,255,.85);padding:42px 32px;display:flex;flex:1;flex-direction:column;justify-content:center;min-height:0}
 .detail-card h2,.attire-section h2,.about-section h2,.rsvp-section h2{margin:0;letter-spacing:5px;font-size:30px;font-weight:600}
 .rule{width:72%;height:1px;background:rgba(255,255,255,.8);margin:18px auto}
 .detail-card p{margin:0;line-height:1.8;letter-spacing:1.5px;font-size:13px}
@@ -80,7 +80,7 @@ button,input,textarea{font:inherit}
 .about-photo{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center}
 
 .rsvp-section{padding:82px 0;background:var(--green);color:#fff;position:relative;overflow:hidden}
-.rsvp-section::before{content:'';position:absolute;inset:0;background:url('assets/pattern-white.png') center/cover repeat;opacity:.2;pointer-events:none}
+.rsvp-section::before{content:'';position:absolute;inset:0;background:url('assets/pattern-white.png') center/cover repeat;opacity:.15;pointer-events:none}
 .rsvp-inner{position:relative;z-index:1}
 .rsvp-inner h2{text-align:center;margin-bottom:22px}
 .rsvp-intro{text-align:center;letter-spacing:2px;font-size:15px;margin:0 0 36px}
@@ -117,9 +117,9 @@ textarea{resize:vertical;min-height:140px}
   .eyebrow{font-size:12px;letter-spacing:3px}
   .details-inner h1{font-size:clamp(62px,19vw,90px);line-height:.82;margin-bottom:28px}
   .intro-copy{font-size:11px;letter-spacing:2px;line-height:1.65;margin-bottom:34px}
-  .detail-grid{grid-template-columns:1fr;grid-auto-rows:1fr;gap:22px}
-  .detail-card{padding:18px;min-height:246px}
-  .detail-card-inner{min-height:210px;height:100%;padding:34px 22px}
+  .detail-grid{grid-template-columns:1fr;gap:22px}
+  .detail-card{padding:18px;min-height:300px}
+  .detail-card-inner{padding:34px 22px;min-height:0}
   .detail-card h2,.attire-section h2,.about-section h2,.rsvp-section h2{font-size:22px;letter-spacing:4px}
   .attire-section{min-height:560px}
   .attire-content{padding:96px 0}
