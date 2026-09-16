@@ -35,7 +35,14 @@ button,input,textarea{font:inherit}
   padding:18px clamp(24px,7vw,72px);
 }
 .brand,.footer-brand{display:flex;align-items:center;gap:16px;font-size:13px;font-weight:600;letter-spacing:3px}
-.brand-logo,.footer-logo{width:54px;height:54px;object-fit:contain}
+.brand-logo,.footer-logo{
+  width:54px;
+  height:auto;
+  max-height:54px;
+  object-fit:contain;
+  object-position:center;
+  flex:0 0 auto;
+}
 .top-nav,.footer-nav{display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:2px;font-weight:500}
 .top-nav>a:not(.button),.footer-nav>a{padding:13px 18px;border:1px solid transparent}
 .button{display:inline-block;padding:14px 34px;font-weight:600;letter-spacing:2px}
@@ -51,16 +58,16 @@ button,input,textarea{font:inherit}
 .eyebrow{color:var(--green-soft);letter-spacing:4px;font-weight:500;font-size:14px;margin:0 0 24px}
 .details-inner h1{font-family:'Runethia',cursive;font-weight:400;color:var(--green);font-size:clamp(64px,8vw,104px);line-height:.92;margin:0 0 26px}
 .intro-copy{max-width:900px;margin:0 auto 58px;color:var(--green-soft);text-transform:uppercase;letter-spacing:3px;line-height:1.7;font-size:14px}
-.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.detail-card{background:var(--green);padding:24px;color:#fff}
-.detail-card-inner{border:1px solid rgba(255,255,255,.85);padding:42px 32px;min-height:220px;display:flex;flex-direction:column;justify-content:center}
+.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.detail-card{background:var(--green);padding:24px;color:#fff;height:100%;display:flex}
+.detail-card-inner{border:1px solid rgba(255,255,255,.85);padding:42px 32px;min-height:220px;display:flex;flex:1;flex-direction:column;justify-content:center}
 .detail-card h2,.attire-section h2,.about-section h2,.rsvp-section h2{margin:0;letter-spacing:5px;font-size:30px;font-weight:600}
 .rule{width:72%;height:1px;background:rgba(255,255,255,.8);margin:18px auto}
 .detail-card p{margin:0;line-height:1.8;letter-spacing:1.5px;font-size:13px}
 
-.attire-section{position:relative;min-height:440px;background:url('assets/venue.jpg') center 47%/cover no-repeat;display:grid;place-items:center;color:#fff;text-align:center}
+.attire-section{position:relative;min-height:560px;background:url('assets/venue.jpg') center 47%/cover no-repeat;display:grid;place-items:center;color:#fff;text-align:center}
 .attire-overlay{position:absolute;inset:0;background:rgba(31,34,30,.58)}
-.attire-content{position:relative;z-index:1;padding:84px 0}
+.attire-content{position:relative;z-index:1;padding:110px 0}
 .attire-content p{max-width:760px;margin:22px auto 34px;letter-spacing:3px;line-height:1.7;text-transform:uppercase;font-size:14px}
 .palette{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
 .palette span{width:74px;height:74px;border-radius:50%;background:var(--swatch);border:1px solid rgba(255,255,255,.75);box-shadow:0 4px 14px rgba(0,0,0,.15)}
@@ -69,7 +76,7 @@ button,input,textarea{font:inherit}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .about-copy h2{color:var(--green);margin-bottom:34px}
 .about-copy>p:not(.about-callout){color:var(--green-soft);font-size:18px;line-height:1.55;max-width:540px}
-.about-callout{margin-top:34px;background:var(--green-soft);color:#fff;padding:18px 22px;letter-spacing:4px;line-height:1.6;text-align:center;max-width:520px;font-size:14px}
+.about-callout{margin-top:34px;background:var(--green-soft);color:#fff;padding:18px 22px;letter-spacing:4px;line-height:1.6;text-align:left;max-width:520px;font-size:14px}
 .about-photo{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center}
 
 .rsvp-section{padding:82px 0;background:var(--green);color:#fff;position:relative;overflow:hidden}
@@ -82,9 +89,12 @@ button,input,textarea{font:inherit}
 .field label,.choice-group legend{font-size:15px;letter-spacing:1px}
 .choice-group{border:0;padding:0;margin:0}
 .choice-group legend{margin-bottom:10px}
-.choice{display:inline-flex!important;align-items:center;margin-right:14px;gap:0}
+.choice-row{display:flex;gap:14px;flex-wrap:wrap}
+.choice{display:inline-flex!important;align-items:center;margin:0;gap:0}
 .choice input{position:absolute;opacity:0;pointer-events:none}
-.choice span{background:#fff;color:var(--green-dark);padding:9px 14px;font-weight:600;letter-spacing:.6px;cursor:pointer}
+.choice span{background:#fff;color:var(--green-dark);padding:9px 14px;font-weight:600;letter-spacing:.6px;cursor:pointer;text-align:center;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.attendance-group .choice span{width:210px}
+.guest-group .choice span{width:86px}
 .choice input:checked+span{background:var(--lime)}
 input[type='text'],input[type='number'],textarea{width:100%;border:0;background:#fff;color:var(--charcoal);padding:14px 16px;outline:0}
 textarea{resize:vertical;min-height:140px}
@@ -96,9 +106,9 @@ textarea{resize:vertical;min-height:140px}
 .divider{height:30px;width:1px;background:rgba(255,255,255,.55)}
 
 @media (max-width:760px){
-  .site-header{background:#2f312f;flex-direction:column;justify-content:center;text-align:center;padding:34px 24px}
+  .site-header{background:var(--green);flex-direction:column;justify-content:center;text-align:center;padding:34px 24px}
   .brand{flex-direction:column;gap:12px;font-size:12px;letter-spacing:2px}
-  .brand-logo{width:72px;height:72px}
+  .brand-logo{width:72px;height:auto;max-height:72px}
   .top-nav{margin-top:10px}
   .top-nav .button-light{background:transparent;color:#fff;padding:14px 20px}
   .hero-photo img{height:90vw;min-height:360px;object-position:center}
@@ -108,11 +118,11 @@ textarea{resize:vertical;min-height:140px}
   .details-inner h1{font-size:clamp(62px,19vw,90px);line-height:.82;margin-bottom:28px}
   .intro-copy{font-size:11px;letter-spacing:2px;line-height:1.65;margin-bottom:34px}
   .detail-grid{grid-template-columns:1fr;gap:22px}
-  .detail-card{padding:18px}
+  .detail-card{padding:18px;min-height:246px}
   .detail-card-inner{min-height:210px;padding:34px 22px}
   .detail-card h2,.attire-section h2,.about-section h2,.rsvp-section h2{font-size:22px;letter-spacing:4px}
-  .attire-section{min-height:470px}
-  .attire-content{padding:64px 0}
+  .attire-section{min-height:560px}
+  .attire-content{padding:96px 0}
   .attire-content p{font-size:12px;letter-spacing:2px}
   .palette{gap:18px;max-width:340px;margin:0 auto}
   .palette span{width:62px;height:62px}
@@ -122,11 +132,13 @@ textarea{resize:vertical;min-height:140px}
   .about-copy h2{order:1;text-align:center;margin:0 0 2px;color:var(--green)}
   .about-photo{order:2;aspect-ratio:4/5;object-position:center}
   .about-copy>p:not(.about-callout){order:3;font-size:14px;text-align:center;margin:0 auto;color:var(--green-soft)}
-  .about-callout{order:4;font-size:11px;letter-spacing:3px;margin:0 auto;max-width:100%}
+  .about-callout{order:4;font-size:11px;letter-spacing:3px;margin:0 auto;max-width:100%;text-align:left}
   .rsvp-section{padding:58px 0}
   .rsvp-intro{font-size:13px;line-height:1.5}
   .rsvp-form{gap:24px}
-  .choice{display:flex!important;margin:0 0 10px 0;width:max-content}
+  .choice-row{flex-direction:column;align-items:flex-start;gap:10px}
+  .attendance-group .choice,.guest-group .choice{width:100%;max-width:280px}
+  .attendance-group .choice span,.guest-group .choice span{width:100%}
   .site-footer{flex-direction:column;justify-content:center;text-align:center;padding:36px 24px}
   .footer-brand{flex-direction:column;gap:10px;font-size:11px;letter-spacing:2px}
 }
