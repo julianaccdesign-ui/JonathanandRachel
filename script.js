@@ -4,6 +4,24 @@ const status = document.getElementById('form-status');
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('page-loaded');
 
+  const attireSection = document.querySelector('.attire-section');
+  if (attireSection) {
+    const loadVenueBackground = () => attireSection.classList.add('bg-loaded');
+    if ('IntersectionObserver' in window) {
+      const bgObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadVenueBackground();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '500px 0px' });
+      bgObserver.observe(attireSection);
+    } else {
+      loadVenueBackground();
+    }
+  }
+
   const revealTargets = [
     '.eyebrow',
     '.details-inner h1',
