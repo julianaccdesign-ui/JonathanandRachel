@@ -7,6 +7,7 @@
   <title>Johnathan & Rachel's Wedding</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/couple-about.jpg" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -24,7 +25,7 @@
 
   <main>
     <section class="hero-photo" aria-label="Johnathan and Rachel">
-      <img src="assets/couple-hero.jpg" alt="Johnathan and Rachel" />
+      <img src="assets/couple-about.jpg" alt="Johnathan and Rachel" fetchpriority="high" decoding="async" />
     </section>
 
     <section class="details-section section-pattern-light">
@@ -53,7 +54,7 @@
       </div>
     </section>
 
-    <section class="attire-section">
+    <section class="attire-section" data-bg="assets/venue.jpg">
       <div class="attire-overlay"></div>
       <div class="section-inner attire-content">
         <h2>WEDDING ATTIRE</h2>
@@ -75,7 +76,7 @@
           <p>We're so grateful for the way God brought us together and guided us to this beautiful season. It brings us so much joy to begin our life together as husband and wife, surrounded by the people we love.</p>
           <p class="about-callout">WE WOULD LOVE FOR YOU TO BE PART OF THIS SPECIAL DAY.</p>
         </div>
-        <img src="assets/couple-about.jpg" alt="Johnathan and Rachel together" class="about-photo" />
+        <img src="assets/couple-about.jpg" alt="Johnathan and Rachel together" class="about-photo" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -135,6 +136,6 @@
     </nav>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
