@@ -1,4 +1,15 @@
+.brand-logo{
+  width:68px;
+  height:auto;
+  max-height:68px;
+}
+
 @media (max-width:760px){
+  .brand-logo{
+    width:82px;
+    max-height:82px;
+  }
+
   .details-inner h1{
     line-height:1.02;
     margin-bottom:34px;
