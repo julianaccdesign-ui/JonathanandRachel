@@ -4,6 +4,30 @@ const status = document.getElementById('form-status');
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('page-loaded');
 
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+
+  if (menuToggle && mobileNav) {
+    const closeMenu = () => {
+      menuToggle.classList.remove('is-open');
+      mobileNav.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    };
+
+    menuToggle.addEventListener('click', () => {
+      const willOpen = !mobileNav.classList.contains('is-open');
+      menuToggle.classList.toggle('is-open', willOpen);
+      mobileNav.classList.toggle('is-open', willOpen);
+      menuToggle.setAttribute('aria-expanded', String(willOpen));
+      menuToggle.setAttribute('aria-label', willOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    mobileNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
   const attireSection = document.querySelector('.attire-section');
   if (attireSection) {
     const loadVenueBackground = () => attireSection.classList.add('bg-loaded');
