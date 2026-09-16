@@ -15,6 +15,11 @@
   display:none;
 }
 
+/* Tighten the space between the couple's names and invitation copy. */
+.details-inner h1{
+  margin-bottom:14px;
+}
+
 /* Center the full RSVP form, including all copy and controls. */
 .rsvp-form{
   width:min(760px,100%);
@@ -167,7 +172,7 @@
 
   .details-inner h1{
     line-height:1.02;
-    margin-bottom:34px;
+    margin-bottom:16px;
   }
 
   .eyebrow{
