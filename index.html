@@ -18,9 +18,24 @@
       <img src="assets/logo.svg" alt="Jonathan and Rachel monogram" class="brand-logo" />
       <span>Jonathan &amp; Rachel's Wedding</span>
     </a>
+
     <nav class="top-nav" aria-label="Main navigation">
       <a href="#home">HOME</a>
       <a class="button button-light" href="#rsvp">RSVP</a>
+    </nav>
+
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="mobile-nav" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#home">HOME</a>
+      <a href="#details">DETAILS</a>
+      <a href="#attire">ATTIRE</a>
+      <a href="#about">ABOUT</a>
+      <a href="#rsvp">RSVP</a>
     </nav>
   </header>
 
@@ -29,7 +44,7 @@
       <img src="assets/couple-hero.jpg" alt="Jonathan and Rachel" fetchpriority="high" decoding="async" />
     </section>
 
-    <section class="details-section section-pattern-light">
+    <section class="details-section section-pattern-light" id="details">
       <div class="section-inner details-inner">
         <p class="eyebrow">WITH JOYOUS HEARTS</p>
         <h1>Jonathan &amp; Rachel</h1>
@@ -55,7 +70,7 @@
       </div>
     </section>
 
-    <section class="attire-section" data-bg="assets/venue.jpg">
+    <section class="attire-section" id="attire" data-bg="assets/venue.jpg">
       <div class="attire-overlay"></div>
       <div class="section-inner attire-content">
         <h2>WEDDING ATTIRE</h2>
@@ -70,7 +85,7 @@
       </div>
     </section>
 
-    <section class="about-section">
+    <section class="about-section" id="about">
       <div class="section-inner about-grid">
         <div class="about-copy">
           <h2>ABOUT US</h2>
