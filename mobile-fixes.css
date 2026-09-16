@@ -75,7 +75,7 @@
   .brand{
     flex-direction:row;
     align-items:center;
-    gap:14px;
+    gap:8px;
     min-width:0;
     flex:1 1 auto;
   }
