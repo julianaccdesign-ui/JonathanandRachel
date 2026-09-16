@@ -15,6 +15,21 @@
   display:none;
 }
 
+/* Keep the RSVP form visually centered while preserving left-aligned labels. */
+.rsvp-form{
+  width:min(760px,100%);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.rsvp-form .choice-row{
+  justify-content:center;
+}
+
+.submit-button{
+  justify-self:center;
+}
+
 @media (max-width:760px){
   .site-header{
     position:relative;
