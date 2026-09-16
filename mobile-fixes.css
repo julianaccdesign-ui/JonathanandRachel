@@ -15,19 +15,47 @@
   display:none;
 }
 
-/* Keep the RSVP form visually centered while preserving left-aligned labels. */
+/* Center the full RSVP form, including all copy and controls. */
 .rsvp-form{
   width:min(760px,100%);
   margin-left:auto;
   margin-right:auto;
+  text-align:center;
+}
+
+.rsvp-form .field,
+.rsvp-form .choice-group{
+  text-align:center;
+}
+
+.rsvp-form .field label,
+.rsvp-form .choice-group legend,
+.rsvp-form .helper,
+.rsvp-form .form-status{
+  width:100%;
+  text-align:center!important;
+}
+
+.rsvp-form input[type='text'],
+.rsvp-form input[type='number'],
+.rsvp-form textarea{
+  text-align:center!important;
 }
 
 .rsvp-form .choice-row{
   justify-content:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.rsvp-form .choice span{
+  text-align:center!important;
 }
 
 .submit-button{
-  justify-self:center;
+  justify-self:center!important;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 @media (max-width:760px){
@@ -176,6 +204,29 @@
   .about-copy>p:not(.about-callout){
     max-width:520px;
     line-height:1.7;
+  }
+
+  /* Keep every RSVP element centered on phones as well. */
+  .rsvp-form,
+  .rsvp-form .field,
+  .rsvp-form .choice-group,
+  .rsvp-form .field label,
+  .rsvp-form .choice-group legend,
+  .rsvp-form .helper,
+  .rsvp-form .form-status{
+    text-align:center!important;
+  }
+
+  .rsvp-form .choice-row{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    justify-content:center!important;
+  }
+
+  .submit-button{
+    justify-self:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
   }
 
   .footer-logo{
