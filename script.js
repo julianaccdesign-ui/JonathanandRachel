@@ -1,5 +1,9 @@
 const form = document.getElementById('rsvp-form');
 const status = document.getElementById('form-status');
+const submitButton = form?.querySelector('.submit-button');
+
+// After you deploy the Google Apps Script web app, paste its /exec URL here.
+const RSVP_ENDPOINT = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('page-loaded');
@@ -87,8 +91,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 if (form) {
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    status.textContent = 'The RSVP form is ready for its submission connection. We’ll connect it to your response sheet next.';
+
+    if (RSVP_ENDPOINT.includes('PASTE_GOOGLE_APPS_SCRIPT')) {
+      status.textContent = 'The RSVP form still needs its Google Sheet connection.';
+      return;
+    }
+
+    const originalButtonText = submitButton?.textContent || 'Submit';
+    const formData = new FormData(form);
+    const body = new URLSearchParams();
+
+    formData.forEach((value, key) => {
+      body.append(key, value.toString().trim());
+    });
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+    }
+    status.textContent = '';
+
+    try {
+      await fetch(RSVP_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body
+      });
+
+      form.reset();
+      status.textContent = 'Thank you! Your RSVP has been received.';
+    } catch (error) {
+      console.error('RSVP submission failed:', error);
+      status.textContent = 'Something went wrong. Please try again in a moment.';
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    }
   });
 }
