@@ -91,8 +91,107 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 if (form) {
+  const validationRules = [
+    {
+      selector: '#full-name',
+      message: 'Please enter your full name.'
+    },
+    {
+      selector: 'input[name="attendance"]',
+      group: true,
+      message: 'Please let us know if you will be joining us.'
+    },
+    {
+      selector: 'input[name="plusOne"]',
+      group: true,
+      message: 'Please let us know if you are bringing a guest.'
+    },
+    {
+      selector: '#party-size',
+      message: 'Please enter the number attending.'
+    }
+  ];
+
+  const clearFieldError = (container) => {
+    if (!container) return;
+    container.classList.remove('has-error');
+    const error = container.querySelector('.field-error');
+    if (error) error.remove();
+    container.querySelectorAll('[aria-invalid="true"]').forEach((input) => {
+      input.removeAttribute('aria-invalid');
+    });
+  };
+
+  const showFieldError = (container, controls, message) => {
+    if (!container) return;
+    clearFieldError(container);
+    container.classList.add('has-error');
+
+    const error = document.createElement('p');
+    error.className = 'field-error';
+    error.textContent = message;
+    error.setAttribute('role', 'alert');
+    container.appendChild(error);
+
+    controls.forEach((control) => control.setAttribute('aria-invalid', 'true'));
+  };
+
+  const validateForm = () => {
+    let firstInvalid = null;
+
+    validationRules.forEach((rule) => {
+      const controls = Array.from(form.querySelectorAll(rule.selector));
+      if (!controls.length) return;
+
+      const container = controls[0].closest('.field');
+      let valid = true;
+
+      if (rule.group) {
+        valid = controls.some((control) => control.checked);
+      } else {
+        const control = controls[0];
+        valid = control.value.trim() !== '' && control.checkValidity();
+      }
+
+      if (!valid) {
+        showFieldError(container, controls, rule.message);
+        if (!firstInvalid) firstInvalid = controls[0];
+      } else {
+        clearFieldError(container);
+      }
+    });
+
+    if (firstInvalid) {
+      firstInvalid.focus({ preventScroll: true });
+      firstInvalid.closest('.field')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+
+    return true;
+  };
+
+  form.querySelectorAll('input[required]').forEach((input) => {
+    const eventName = input.type === 'radio' ? 'change' : 'input';
+    input.addEventListener(eventName, () => {
+      const container = input.closest('.field');
+      if (!container?.classList.contains('has-error')) return;
+
+      if (input.type === 'radio') {
+        const group = Array.from(form.querySelectorAll(`input[name="${input.name}"]`));
+        if (group.some((item) => item.checked)) clearFieldError(container);
+      } else if (input.value.trim() !== '' && input.checkValidity()) {
+        clearFieldError(container);
+      }
+    });
+  });
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+
+    if (!validateForm()) {
+      status.textContent = 'Please complete the highlighted fields before submitting.';
+      return;
+    }
 
     const originalButtonText = submitButton?.textContent || 'Submit';
     const formData = new FormData(form);
@@ -116,6 +215,7 @@ if (form) {
       });
 
       form.reset();
+      form.querySelectorAll('.has-error').forEach(clearFieldError);
       status.textContent = 'Thank you! Your RSVP has been sent.';
     } catch (error) {
       console.error('RSVP submission failed:', error);
