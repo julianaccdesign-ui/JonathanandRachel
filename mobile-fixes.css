@@ -222,10 +222,28 @@
     text-align:center!important;
   }
 
-  .rsvp-form .choice-row{
+  /* Make RSVP choices use the same full width as the other form fields. */
+  .rsvp-form .choice-row,
+  .attendance-group .choice-row,
+  .guest-group .choice-row{
+    width:100%!important;
+    max-width:none!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:10px;
     margin-left:auto!important;
     margin-right:auto!important;
-    justify-content:center!important;
+    justify-content:stretch!important;
+  }
+
+  .rsvp-form .choice{
+    width:100%;
+    min-width:0;
+  }
+
+  .rsvp-form .choice span{
+    width:100%;
+    padding-left:8px;
+    padding-right:8px;
   }
 
   .submit-button{
